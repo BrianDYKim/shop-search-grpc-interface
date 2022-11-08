@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "team.bakkas.shop.search";
+option java_outer_classname = "ShopSearchProto";
+
+service ShopSearch {
+  rpc searchWithIn (SearchWithInGrpcRequest) returns (SearchResponse);
+  rpc searchShopNameWithIn (SearchShopNameGrpcRequest) returns (SearchResponse);
+  rpc searchCategoryWithIn (SearchCategoryGrpcRequest) returns (SearchResponse);
+  rpc searchDetailCategoryWithIn (SearchDetailCategoryGrpcRequest) returns (SearchResponse);
+}
+
+message SearchWithInGrpcRequest {
+  double latitude = 1;
+  double longitude = 2;
+  double distance = 3;
+  string unit = 4;
+  int32 page = 5;
+  int32 size = 6;
+}
+
+message SearchShopNameGrpcRequest {
+  string shopName = 1;
+  double latitude = 2;
+  double longitude = 3;
+  double distance = 4;
+  string unit = 5;
+  int32 page = 6;
+  int32 size = 7;
+}
+
+message SearchCategoryGrpcRequest {
+  string category = 1;
+  double latitude = 2;
+  double longitude = 3;
+  double distance = 4;
+  string unit = 5;
+  int32 page = 6;
+  int32 size = 7;
+}
+
+message SearchDetailCategoryGrpcRequest {
+  string detailCategory = 1;
+  double latitude = 2;
+  double longitude = 3;
+  double distance = 4;
+  string unit = 5;
+  int32 page = 6;
+  int32 size = 7;
+}
+
+message SearchResponse {
+  repeated string idList = 1;
+}
